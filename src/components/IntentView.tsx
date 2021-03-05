@@ -24,7 +24,7 @@ const ButtonContainer = styled.div`
 `;
 
 const Heading = styled.div`
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   border-bottom: solid 1px;
   border-color: lightgrey;
   display: grid;
@@ -60,7 +60,7 @@ export default function IntentView({ intent, handleIntentSelect }: IntentProps) 
         <span> {intent.description}</span>
       </Heading>
 
-      <div style={{ padding: '5px 0' }}>
+      <div style={{ padding: '10px 0' }}>
         <Text bold color="darkBlue">
           Q:
         </Text>

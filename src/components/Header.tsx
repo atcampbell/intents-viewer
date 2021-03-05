@@ -11,23 +11,17 @@ const Container = styled.div`
   background: ${(props) => props.theme.colors.dark};
   padding: 20px;
   padding-bottom: 30px;
+  text-shadow: 1px 1px 2px ${(props) => props.theme.colors.darkGrey};
 `;
-
-// const TextContainer = styled.div`
-//   text-align: center;
-//   border-radius: 10px;
-//   display: grid;
-//   padding: 20px;
-
-//   background: ${(props) => props.theme.colors.darkBlue};
-// `;
 
 export default function StyledHeader() {
   return (
     <Container>
       <h1>Intent Picker</h1>
-      <span>Select intents from the list below to add them to the list.</span>
-      <span>Further expressions can be seen by clicking the show all expressions button.</span>
+      <span>Select and preview pre-trained Intents for your AI bot.</span>
+      <span style={{ paddingTop: '10px' }}>
+        The 'show expressions' button will show all expressions related to that Intent.
+      </span>
     </Container>
   );
 }

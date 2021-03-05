@@ -9,7 +9,6 @@ import { Intent } from '../types/Intent';
 const Container = styled.div`
   display: grid;
   grid-template-colums: 1fr;
-
   grid-template-rows: auto 1fr;
   background: ${(props) => props.theme.colors.lightGrey};
 `;
