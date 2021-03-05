@@ -20,7 +20,15 @@ const StyledDiv = styled(animated.div)`
   bottom: 0;
 `;
 
-export default function Notification({ notificationVisible, setNotificationVisible }) {
+interface NotificationProps {
+  notificationVisible: boolean;
+  setNotificationVisible: (visible: boolean) => void;
+}
+
+export default function Notification({
+  notificationVisible = false,
+  setNotificationVisible,
+}: NotificationProps) {
   useEffect(() => {
     if (notificationVisible) {
       let timer = setTimeout(() => setNotificationVisible(false), 2000);
@@ -35,12 +43,16 @@ export default function Notification({ notificationVisible, setNotificationVisib
     leave: { opacity: 0 },
   });
 
-  return transitions.map(
-    ({ item, key, props }) =>
-      item && (
-        <StyledDiv key={key} style={props}>
-          Intent Added!
-        </StyledDiv>
-      )
+  return (
+    <>
+      {transitions.map(
+        ({ item, key, props }) =>
+          item && (
+            <StyledDiv key={key} style={props}>
+              Intent Added!
+            </StyledDiv>
+          )
+      )}
+    </>
   );
 }

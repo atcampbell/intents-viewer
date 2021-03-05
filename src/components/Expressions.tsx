@@ -1,7 +1,13 @@
 import React from 'react';
 import { useTrail, animated } from 'react-spring';
+import { Expression } from '../types/Intent';
 
-function Trail({ open, children, ...props }) {
+interface TrailProps {
+  open: boolean;
+  children: React.ReactNode;
+}
+
+function Trail({ open, children, ...props }: TrailProps) {
   const items = React.Children.toArray(children);
 
   const trail = useTrail(items.length, {
@@ -18,6 +24,7 @@ function Trail({ open, children, ...props }) {
         {trail.map(({ x, height, ...rest }, index) => (
           <animated.div
             key={index}
+            // @ts-ignore
             style={{ ...rest, transform: x.interpolate((x) => `translate3d(0,${x}px,0)`) }}
           >
             <animated.div style={{ height }}>{items[index]}</animated.div>
@@ -28,11 +35,19 @@ function Trail({ open, children, ...props }) {
   );
 }
 
-export default function Expressions({ expressions, open }) {
+interface ExpressionsProps {
+  expressions: Expression[];
+  open: boolean;
+}
+
+export default function Expressions({ expressions, open }: ExpressionsProps) {
   return (
     <Trail open={open}>
       {expressions.map((expression) => (
-        <span key={expression.id}>{expression.text}</span>
+        <span style={{ paddingLeft: '10px' }} key={expression.id}>
+          {'- '}
+          {expression.text}
+        </span>
       ))}
     </Trail>
   );
